@@ -1,5 +1,3 @@
-aaaaaaaaaaaa
-
 <?php
   //number of items in cart
   $cart_num = 0;
@@ -92,7 +90,7 @@ aaaaaaaaaaaa
   </header>
 
   <!-- ======= Hero Section ======= -->
-  <section class="hero-section" id="hero">
+  <section class="hero-section h-75" id="hero">
 
     <!-- <div class="wave">
 
@@ -111,11 +109,8 @@ aaaaaaaaaaaa
         <div class="col-12 hero-text-image">
           <div class="row">
             <div class="col-lg-7 text-center text-lg-left">
-              <h1 data-aos="fade-right">Promote Your App with SoftLand</h1>
-              <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit.</p>
-              <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500">
-              <a href="#" class="btn btn-outline-white">Get started</a></p>
+              <h1 data-aos="fade-right">Furniture Is Waiting For You</h1>
+              <p class="mb-5" data-aos="fade-right" data-aos-delay="100">A favorite item for your favorite furniture. What to do next off.</p>
             </div>
           </div>
         </div>
@@ -169,7 +164,7 @@ aaaaaaaaaaaa
       </div>
     </section>
 
-    <section class="section">
+    <!-- <section class="section">
 
       <div class="container">
         <div class="row justify-content-center text-center mb-5" data-aos="fade">
@@ -203,20 +198,21 @@ aaaaaaaaaaaa
         </div>
       </div>
 
-    </section>
+    </section> -->
 
     <section class="section">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-4 mr-auto">
-            <h2 class="mb-4">Seamlessly Communicate</h2>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio,
-              laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt
-              dolore mollitia esse natus beatae.</p>
-            <p><a href="#" class="btn btn-primary">Download Now</a></p>
+          <div class="col-md-5 mr-auto">
+            <h2 class="mb-4">在宅ワークと家事を両立するダイニングキッチンコーディネート</h2>
+            <p class="mb-4">新しい生活様式が少しずつ定着しつつある今、オフィスワークから在宅ワークへと
+            勤務形態が切り替わった方も多いかと思います。もともとOFFの空間である自宅をONの職場として快適に
+            過ごすためには、仕事と家事をスムーズに両立できることがポイントではないでしょうか。
+            そこで在宅ワークのスペースをつくりつつ休憩時間や終業後の家事などを無理なく両立しやすいコーディネートをご紹介します。</p>
+            
           </div>
           <div class="col-md-6" data-aos="fade-left">
-            <img src="../assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room1.jpg" alt="Image" class="img-fluid">
           </div>
         </div>
       </div>
@@ -225,15 +221,52 @@ aaaaaaaaaaaa
     <section class="section">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-4 ml-auto order-2">
-            <h2 class="mb-4">Gather Feedback</h2>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio,
-              laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt
-              dolore mollitia esse natus beatae.</p>
-            <p><a href="#" class="btn btn-primary">Download Now</a></p>
+          <div class="col-md-5 ml-auto order-2">
+            <h2 class="mb-4">一人暮らしを満喫する1LDK北欧スタイルコーディネート</h2>
+            <p class="mb-4">1人暮らしの方にも人気の高い1LDKの北欧スタイルコーディネートです。
+            こちらは30代女性の1人暮らしを想定。平日は忙しく働いているため、
+            休日は自宅でゆったり過ごしたり趣味を楽しめるようにインテリアを工夫しています。
+            コンパクトなLDKはくつろげるスペースがメインになるように家具をセレクトしています。</p>
           </div>
           <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/img/undraw_svg_3.svg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room2.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-5 mr-auto">
+            <h2 class="mb-4">個人のスペースも大切にした2人の寝室コーディネート</h2>
+            <p class="mb-4">夫婦やカップルの方におすすめの、個人のスペースも大切にした寝室コーディネートです。
+            2人一緒に眠る寝室でも、空いたスペースにそれぞれが使いやすい家具や家電をレイアウトすることで、
+            ゆるやかに個人スペースを確保することができます。6畳ほどのスペースがあれば、
+            ダブルサイズのベッドを置いてもベッドの両サイドにデスク1台分ずつの空間が残ります。
+            その空いたスペースにお互いが過ごしやすいアイテムを置くことで、ベッドが間仕切りとなったレイアウトです。</p>
+            
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <img src="../assets/img/room3.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-5 ml-auto order-2">
+            <h2 class="mb-4">個人のスペースも大切にした2人の寝室コーディネート</h2>
+            <p class="mb-4">夫婦やカップルの方におすすめの、個人のスペースも大切にした寝室コーディネートです。
+            2人一緒に眠る寝室でも、空いたスペースにそれぞれが使いやすい家具や家電をレイアウトすることで、
+            ゆるやかに個人スペースを確保することができます。6畳ほどのスペースがあれば、
+            ダブルサイズのベッドを置いてもベッドの両サイドにデスク1台分ずつの空間が残ります。
+            その空いたスペースにお互いが過ごしやすいアイテムを置くことで、ベッドが間仕切りとなったレイアウトです。</p>
+          </div>
+          <div class="col-md-6" data-aos="fade-right">
+            <img src="../assets/img/room3.jpg" alt="Image" class="img-fluid">
           </div>
         </div>
       </div>
