@@ -1,8 +1,10 @@
 <?php
   //number of items in cart
   $cart_num = 0;
-  $num_format = 10101;
+  $num_format = 10101;\
 
+  session_start();
+  
 ?>
 
 
@@ -70,7 +72,18 @@
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
               <li class="active"><a href="index.php" class="nav-link">Home</a></li>
-              <li><a href="login.php" class="nav-link">login</a></li>
+              <li>
+              <?php
+                if(isset($_POST['username'])){
+                  ?><a href="index.php" class="nav-link" onclick="<?php
+                  unset($_SESSION['username']);
+                  ?>">logout</a><?php 
+                }else{
+              ?>
+                <a href="login.php" class="nav-link">login</a>
+              <?php
+                } ?>
+              </li>
               <li><a href="cart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
 
             </ul>
@@ -127,36 +140,33 @@
 
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-5" data-aos="fade-up">
-            <h2 class="section-heading">Save your time to using SoftLand</h2>
+            <h2 class="section-heading">カテゴリで選ぶ</h2>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
             <div class="feature-1 text-center">
-              <div class="wrap-icon icon-1">
-                <span class="icon la la-users"></span>
+              <div class="cursor">
+                <img src="../assets/img/room3-chair.png" alt="Image" width="300px" hight="100%">
               </div>
-              <h3 class="mb-3">Explore Your Team</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
+              <h3 class="mb-3">椅子・チェアー</h3>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="feature-1 text-center">
-              <div class="wrap-icon icon-1">
-                <span class="icon la la-toggle-off"></span>
+            <div class="cursor">
+                <img src="../assets/img/room3-desk.png" alt="Image" width="300px" hight="100%">
               </div>
-              <h3 class="mb-3">Digital Whiteboard</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
+              <h3 class="mb-3">机</h3>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
             <div class="feature-1 text-center">
-              <div class="wrap-icon icon-1">
-                <span class="icon la la-umbrella"></span>
+              <div class="cursor">
+                <img src="../assets/img/room3-bed.png" alt="Image" width="300px" hight="100%">
               </div>
-              <h3 class="mb-3">Design To Development</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
+              <h3 class="mb-3">ベッド</h3>
             </div>
           </div>
         </div>
@@ -211,7 +221,7 @@
             そこで在宅ワークのスペースをつくりつつ休憩時間や終業後の家事などを無理なく両立しやすいコーディネートをご紹介します。</p>
             
           </div>
-          <div class="col-md-6" data-aos="fade-left">
+          <div class="col-md-6 feature-2" data-aos="fade-left">
             <img src="../assets/img/room1.jpg" alt="Image" class="img-fluid">
           </div>
         </div>
@@ -220,7 +230,7 @@
 
     <section class="section">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center feature-2">
           <div class="col-md-5 ml-auto order-2">
             <h2 class="mb-4">一人暮らしを満喫する1LDK北欧スタイルコーディネート</h2>
             <p class="mb-4">1人暮らしの方にも人気の高い1LDKの北欧スタイルコーディネートです。
@@ -237,7 +247,7 @@
 
     <section class="section">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center feature-2">
           <div class="col-md-5 mr-auto">
             <h2 class="mb-4">個人のスペースも大切にした2人の寝室コーディネート</h2>
             <p class="mb-4">夫婦やカップルの方におすすめの、個人のスペースも大切にした寝室コーディネートです。
@@ -256,17 +266,17 @@
 
     <section class="section">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center feature-2">
           <div class="col-md-5 ml-auto order-2">
-            <h2 class="mb-4">個人のスペースも大切にした2人の寝室コーディネート</h2>
-            <p class="mb-4">夫婦やカップルの方におすすめの、個人のスペースも大切にした寝室コーディネートです。
-            2人一緒に眠る寝室でも、空いたスペースにそれぞれが使いやすい家具や家電をレイアウトすることで、
-            ゆるやかに個人スペースを確保することができます。6畳ほどのスペースがあれば、
-            ダブルサイズのベッドを置いてもベッドの両サイドにデスク1台分ずつの空間が残ります。
-            その空いたスペースにお互いが過ごしやすいアイテムを置くことで、ベッドが間仕切りとなったレイアウトです。</p>
+            <h2 class="mb-4">ダイニング兼リビングで省スペースが叶うモダンなラウンジスタイル</h2>
+            <p class="mb-4">リビングとダイニングをひとつにまとめたラウンジスタイルは、
+              2つのスペースが集約されるのでレイアウトする家具が少なくなります。
+              そのため、同じ空間でもゆとりが生まれるのでお部屋を広く見せることができたり、
+              空いたスペースを別の用途としてレイアウトすることができるようになります。
+              省スペースでくつろぎの空間をコーディネートすることができるので、限られたスペースにもおすすめです。</p>
           </div>
           <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/img/room3.jpg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room4.jpg" alt="Image" class="img-fluid">
           </div>
         </div>
       </div>
