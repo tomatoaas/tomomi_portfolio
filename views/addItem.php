@@ -62,25 +62,30 @@
                 <form action="../action/itemAction.php" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="text" name="item_name" placeholder="Item Name" class="form-control form-control-lg text-center">
+                            <input type="text" name="item_name" placeholder="Item Name" class="form-control form-control-lg text-center" required="required">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-7">
                             <div class="input-group">
+                                <input type="number" name="item_price" class="form-control form-control-lg border-left-0" placeholder="Price" aria-label="Price" aria-describedby="price" required="required">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white font-weight-bold" id="price">$</span>
+                                    <span class="input-group-text bg-white font-weight-bold" id="price">円</span>
                                 </div>
-                                <input type="number" name="item_price" class="form-control form-control-lg border-left-0" placeholder="Price" aria-label="Price" aria-describedby="price">
                             </div>
                         </div>
                         <div class="form-group col-md-5">
-                            <input type="number" name="item_stocks" placeholder="Quantity" class="form-control form-control-lg text-center">
+                            <input type="number" name="item_stocks" placeholder="Quantity" class="form-control form-control-lg text-center" required="required">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="submit" value="Add" name="add" class="btn btn-warning form-control">
+                            <input type="file" name="picture" id="" clas="form-control border-0" required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="submit" value="Add" name="additem" class="btn btn-warning form-control">
                         </div>
                     </div>
                 </form>
