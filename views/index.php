@@ -1,10 +1,14 @@
 <?php
+include "../action/itemAction.php";
+
+if(empty($_SESSION)){
+  session_unset();
+  session_destroy();
+}
+
   //number of items in cart
   $cart_num = 0;
-  $num_format = 10101;\
-
-  session_start();
-  
+  $num_format = 10101;
 ?>
 
 
@@ -74,10 +78,11 @@
               <li class="active"><a href="index.php" class="nav-link">Home</a></li>
               <li>
               <?php
-                if(isset($_POST['username'])){
-                  ?><a href="index.php" class="nav-link" onclick="<?php
-                  unset($_SESSION['username']);
-                  ?>">logout</a><?php 
+                if(isset($_SESSION['username'])){
+                  if($_SESSION['status'] == 'A'){
+                    ?><a href="addItem.php" class="nav-link">addItem</a><?php 
+                  }
+                  ?><a href="logout.php" class="nav-link">logout</a><?php 
                 }else{
               ?>
                 <a href="login.php" class="nav-link">login</a>
@@ -174,44 +179,14 @@
       </div>
     </section>
 
-    <!-- <section class="section">
-
+    <section class="section pt-0">
       <div class="container">
-        <div class="row justify-content-center text-center mb-5" data-aos="fade">
-          <div class="col-md-6 mb-5">
-            <img src="../assets/img/undraw_svg_1.svg" alt="Image" class="img-fluid">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-5" data-aos="fade-up">
+            <h2 class="section-heading">コーディネート</h2>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-4">
-            <div class="step">
-              <span class="number">01</span>
-              <h3>Sign Up</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="step">
-              <span class="number">02</span>
-              <h3>Create Profile</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="step">
-              <span class="number">03</span>
-              <h3>Enjoy the app</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section> -->
-
-    <section class="section">
-      <div class="container">
         <div class="row align-items-center">
           <div class="col-md-5 mr-auto">
             <h2 class="mb-4">在宅ワークと家事を両立するダイニングキッチンコーディネート</h2>
@@ -222,7 +197,7 @@
             
           </div>
           <div class="col-md-6 feature-2" data-aos="fade-left">
-            <img src="../assets/img/room1.jpg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room1.jpg" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=1'">
           </div>
         </div>
       </div>
@@ -239,7 +214,7 @@
             コンパクトなLDKはくつろげるスペースがメインになるように家具をセレクトしています。</p>
           </div>
           <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/img/room2.jpg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room2.jpg" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=2'">
           </div>
         </div>
       </div>
@@ -258,7 +233,7 @@
             
           </div>
           <div class="col-md-6" data-aos="fade-left">
-            <img src="../assets/img/room3.jpg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room3.jpg" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=3'">
           </div>
         </div>
       </div>
@@ -276,7 +251,7 @@
               省スペースでくつろぎの空間をコーディネートすることができるので、限られたスペースにもおすすめです。</p>
           </div>
           <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/img/room4.jpg" alt="Image" class="img-fluid">
+            <img src="../assets/img/room4.jpg" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=4'">
           </div>
         </div>
       </div>
