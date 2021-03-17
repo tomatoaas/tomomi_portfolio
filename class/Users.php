@@ -43,9 +43,14 @@
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['first_name'] = $row['first_name'];
                     $_SESSION['last_name'] = $row['last_name'];
-                    $_SESSION['status'] = $row['account_status'];
+                    $_SESSION['status'] = $row['status'];
                 
-                    header("Location: ../views/index.php");
+                    if($row['status'] == 'A'){
+                        header("Location: ../views/addItem.php");
+                    }else{
+                        header("Location: ../views/index.php");
+                    }
+                    
                 }else{
                     return "Invaid Password";
                 }
