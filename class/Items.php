@@ -6,8 +6,6 @@
         public function insertToTable($item_name, $item_price, $item_stocks, $pic){
             $sql = "INSERT INTO items(item_name, item_price, item_stocks, item_picture) VALUES('$item_name', '$item_price', '$item_stocks', '$pic')";
 
-            die($sql);
-
             if($this->conn->query($sql)){
                 return true;
             }else{

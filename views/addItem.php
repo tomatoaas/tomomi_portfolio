@@ -59,7 +59,7 @@
                 <h1 class="text-center mt-5">ADD ITEM</h1>
             </div>
             <div class="card-body">
-                <form action="../action/itemAction.php" method="post">
+                <form action="../action/itemAction.php" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <input type="text" name="item_name" placeholder="Item Name" class="form-control form-control-lg text-center" required="required">
@@ -85,7 +85,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="submit" value="Add" name="additem" class="btn btn-warning form-control">
+                            <input type="submit" value="Add" name="additem" class="btn text-dark form-control btn-outline-secondary">
                         </div>
                     </div>
                 </form>

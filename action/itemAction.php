@@ -3,16 +3,13 @@
     require_once "../class/Items.php";
 
     $item = new Item();
-    session_start();
 
     if(isset($_POST['additem'])){
-        $picture = $_POST['picture'];
-        $pic = $_FILES[$picture];
+        $pic = $_FILES['picture']['name'];
 
-        die($pic);
         $target_dir = "../assets/img/";
 
-        $target_file = $target_dir . basename($_FILES[$picture]);
+        $target_file = $target_dir . basename($_FILES['picture']['name']);
 
         $result = $item->insertToTable($_POST['item_name'], $_POST['item_price'], $_POST['item_stocks'], $pic);
 
