@@ -1,6 +1,9 @@
 <?php
+  include "../action/itemAction.php";
 
     $room = $_GET['room'];
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +63,76 @@
   </header>
 <section class="hero-section2" id="hero">
     <div class="container text-center my-5 pt-5">
-    <img src="../assets/img/room<?php echo $room; ?>.jpg" alt="Image" class="img-fluid rounded w-75">
+        <img src="../assets/img/room<?php echo $room; ?>.jpg" alt="Image" class="img-fluid rounded w-75">
+    </div>
+    <?php
+      $room_items = $item->displayRoomItem($room);
+
+      if(!$room_items){
+    ?>
+      <div class="col-md-12">
+        <p>No Records Found</p>
+      </div>
+    <?php
+      }else{
+        foreach($room_items as $item){
+
+    ?>
+
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center feature-2">
+          <div class="col-md-6 ml-auto order-2">
+          <form action="../action/itemAction.php" method="post">
+          <div class="form-row text-center">
+            <div class="form-group col-md-12">
+              <h2 class="text-white"><?php echo $item['item_name']; ?></h2>
+            </div>
+          </div>
+
+          <div class="form-row text-center">
+            <div class="form-group col-md-12">
+              <h2 class="text-white pt-2"><?php echo number_format($item['item_price']) . "円"; ?></h2>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-5 text-right">
+                <h2 class="text-white pt-2">個数:</h2>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="number" name="buy_quantity" class="form-control form-control-lg text-center border-0 font-weight-bold" min="1" max="<?php echo $item['item_stocks']; ?>">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="submit" value="Register" name="registration" class="form-control btn btn-outline-white">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="submit" value="Register" name="registration" class="form-control btn btn-outline-white">
+            </div>
+          </div>
+    </form>
+          </div>
+          <div class="col-md-6" data-aos="fade-right">
+            <img src="../assets/img/<?php echo $item['item_picture']; ?>" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=2'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <?php
+
+
+        }
+      }
+
+    ?>
+
     </div>
 </section>
 

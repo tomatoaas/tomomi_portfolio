@@ -37,6 +37,25 @@
             return $result->fetch_assoc();
 
         }
+
+        public function displayRoomItem($room){
+            $room_name = "room" . $room;
+            $sql = "SELECT * FROM items WHERE item_picture LIKE '%$room_name%'";
+
+            $result = $this->conn->query($sql);
+
+            $row = array();
+
+            if($result->num_rows > 0){
+                while($room_items = $result->fetch_assoc()){
+                    $row[] = $room_items;
+                }
+
+                return $row;
+            }else{
+                return false;
+            }
+        }
     }
 
 ?>

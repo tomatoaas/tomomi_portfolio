@@ -672,8 +672,9 @@ section {
 }
 
 .hero-section2 {
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.8) 0%, rgba(131, 184, 233, 0.8) 100%);
+  /* background: linear-gradient(to top, rgba(255, 255, 255, 0.8) 0%, rgba(131, 184, 233, 0.8) 100%); */
   position: relative;
+  background:rgb(131, 184, 233, 0.8);
 }
 
 /* .hero-section .card {
