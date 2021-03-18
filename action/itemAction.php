@@ -3,6 +3,7 @@
     require_once "../class/Items.php";
 
     $item = new Item();
+    session_start();
 
     if(isset($_POST['additem'])){
         $pic = $_FILES['picture']['name'];

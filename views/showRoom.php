@@ -16,6 +16,18 @@
     <title>show room</title>
 </head>
 <body>
+
+<!-- ======= Mobile Menu ======= -->
+<div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+  <!-- ======= Header ======= -->
 <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
 
     <div class="container">

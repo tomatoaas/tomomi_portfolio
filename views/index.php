@@ -187,7 +187,7 @@ if(empty($_SESSION)){
           </div>
         </div>
 
-        <div class="row align-items-center">
+        <div class="row align-items-center feature-2">
           <div class="col-md-5 mr-auto">
             <h2 class="mb-4">在宅ワークと家事を両立するダイニングキッチンコーディネート</h2>
             <p class="mb-4">新しい生活様式が少しずつ定着しつつある今、オフィスワークから在宅ワークへと
@@ -196,7 +196,7 @@ if(empty($_SESSION)){
             そこで在宅ワークのスペースをつくりつつ休憩時間や終業後の家事などを無理なく両立しやすいコーディネートをご紹介します。</p>
             
           </div>
-          <div class="col-md-6 feature-2" data-aos="fade-left">
+          <div class="col-md-6" data-aos="fade-left">
             <img src="../assets/img/room1.jpg" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=1'">
           </div>
         </div>
