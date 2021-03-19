@@ -22,6 +22,11 @@
         }else{
             echo "Error in Uploading the Picture";
         }
+    }elseif(isset($_POST['cart'])){
+        if(!isset($_SESSION['username'])){
+            header("Location: ../views/login.php?item_id=". $_POST['item_id']);
+        }else{
+            header("Location: ../views/showRoom.php?room=". $_SESSION['room']);
+        }
     }
-    
 ?>

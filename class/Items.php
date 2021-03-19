@@ -39,6 +39,8 @@
         }
 
         public function displayRoomItem($room){
+            unset($_SESSION['room']);
+            $_SESSION['room'] = $room;
             $room_name = "room" . $room;
             $sql = "SELECT * FROM items WHERE item_picture LIKE '%$room_name%'";
 

@@ -16,21 +16,26 @@
             }
         }
 
-        public function createUser($first_name, $last_name, $address, $email){
+        public function createUser($first_name, $last_name, $address, $email, $item_id){
             $user_account_id = $this->conn->insert_id;
             $sql = "INSERT INTO users(first_name, last_name, address, email, account_id) VALUES('$first_name', '$last_name', '$address', '$email', '$user_account_id')";
 
             $result = $this->conn->query($sql);
 
             if($result){
-                header("Location: ../views/login.php");
+                if($item_id == 0){
+                    header("Location: ../views/login.php");
+                }else{
+                    header("Location: ../views/login.php" . $item_id);
+                }
+                
             }else{
                 die("CANNOT ADD USER: " . $this->conn->error);
             }
 
         }
 
-        public function login($username, $password){
+        public function login($username, $password, $item_id){
             
             $sql = "SELECT * FROM accounts INNER JOIN users ON accounts.account_id = users.account_id WHERE username = '$username'";
 

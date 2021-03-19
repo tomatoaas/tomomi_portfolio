@@ -79,18 +79,20 @@ if(empty($_SESSION)){
               <li>
               <?php
                 if(!isset($_SESSION['username'])){
-                  if($_SESSION['status'] == 'A'){
-                    ?><a href="addItem.php" class="nav-link">addItem</a><?php 
-                  }
-                  ?><a href="logout.php" class="nav-link">logout</a><?php 
-                }else{
               ?>
-                <a href="login.php" class="nav-link">login</a>
+                  <a href="login.php" class="nav-link">login</a>
+              <?php                   
+                }else{
+                  if($_SESSION['status'] == 'A'){
+              ?>
+                    <a href="addItem.php" class="nav-link">addItem</a></li>
+              <?php 
+                  }
+                  ?>
+                  <a href="logout.php" class="nav-link">logout</a></li>
+                  <li><a href="cart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
               <?php
-                } ?>
-              </li>
-              <li><a href="cart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
-
+                } ?> 
             </ul>
           </nav>
         </div>

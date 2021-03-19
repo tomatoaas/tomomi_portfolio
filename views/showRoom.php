@@ -1,10 +1,18 @@
 <?php
-  include "../action/itemAction.php";
+include "../action/itemAction.php";
 
-    $room = $_GET['room'];
-    
+if(empty($_SESSION)){
+  session_unset();
+  session_destroy();
+}
+$room = $_GET['room'];
+
+  //number of items in cart
+  $cart_num = 0;
+  $num_format = 10101;
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +39,7 @@
   </div>
 
   <!-- ======= Header ======= -->
-<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+  <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
 
     <div class="container">
       <div class="row align-items-center">
@@ -45,7 +53,23 @@
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
               <li class="active"><a href="index.php" class="nav-link">Home</a></li>
-              <li><a href="login.php" class="nav-link">login</a></li>
+              <li>
+              <?php
+                if(!isset($_SESSION['username'])){
+              ?>
+                  <a href="login.php" class="nav-link">login</a>
+              <?php                   
+                }else{
+                  if($_SESSION['status'] == 'A'){
+              ?>
+                    <a href="addItem.php" class="nav-link">addItem</a></li>
+              <?php 
+                  }
+                  ?>
+                  <a href="logout.php" class="nav-link">logout</a></li>
+                  <li><a href="cart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
+              <?php
+                } ?> 
             </ul>
           </nav>
         </div>
@@ -109,11 +133,12 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="submit" value="Register" name="registration" class="form-control btn btn-outline-white">
+              <input type="submit" value="cart" name="cart" class="form-control btn btn-outline-white">
             </div>
             <div class="form-group col-md-6">
-              <input type="submit" value="Register" name="registration" class="form-control btn btn-outline-white">
+              <input type="submit" value="buy" name="choose" class="form-control btn btn-outline-white">
             </div>
+            <input type="hidden" value="<?php echo $item['item_id']; ?>" name="item_id">
           </div>
     </form>
           </div>
