@@ -78,7 +78,7 @@ if(empty($_SESSION)){
               <li class="active"><a href="index.php" class="nav-link">Home</a></li>
               <li>
               <?php
-                if(isset($_SESSION['username'])){
+                if(!isset($_SESSION['username'])){
                   if($_SESSION['status'] == 'A'){
                     ?><a href="addItem.php" class="nav-link">addItem</a><?php 
                   }
