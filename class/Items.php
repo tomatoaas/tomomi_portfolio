@@ -58,6 +58,36 @@
                 return false;
             }
         }
+
+        public function addCart($username, $item_id, $buy_quantity){
+            $user_sql = "SELECT user_id FROM accounts INNER JOIN users ON accounts.account_id = users.account_id WHERE username = '$username'";
+            
+            $result = $this->conn->query($user_sql)->fetch_assoc();
+            $user_id = $result['user_id'];
+
+            if($user_id){
+                $sql = "INSERT INTO cart(user_id, item_id, buy_quantity) VALUES('$user_id', '$item_id', '$buy_quantity')";
+                
+                $result = $this->conn->query($sql);
+
+                if($result){
+                    header("Location: ../views/showRoom.php?room=". $_SESSION['room']);
+                }
+
+            }
+        }
+
+        public function countCart($username){
+            $sql = "SELECT count(cart_id) FROM cart INNER JOIN users ON cart.user_id = users.user_id INNER JOIN accounts ON accounts.account_id = users.account_id WHERE accounts.username = '$username'";
+            $result = $this->conn->query($sql)->fetch_assoc();
+            $count_cart = $result['count(cart_id)'];
+            if($count_cart){
+                return $count_cart;
+            }else{
+                return 0;
+            }
+
+        }
     }
 
 ?>

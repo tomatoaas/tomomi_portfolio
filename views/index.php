@@ -6,8 +6,12 @@ if(empty($_SESSION)){
   session_destroy();
 }
 
+$item = new Item();
   //number of items in cart
   $cart_num = 0;
+  if(isset($_SESSION['username'])){
+    $cart_num = $item->countCart($_SESSION['username']);
+  }
   $num_format = 10101;
 ?>
 

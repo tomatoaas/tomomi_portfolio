@@ -6,8 +6,11 @@ if(empty($_SESSION)){
   session_destroy();
 }
 $room = $_GET['room'];
-
+$item = new Item();
   //number of items in cart
+  if(isset($_SESSION['username'])){
+    $cart_num = $item->countCart($_SESSION['username']);
+  }
   $cart_num = 0;
   $num_format = 10101;
 
@@ -127,7 +130,7 @@ $room = $_GET['room'];
                 <h2 class="text-white pt-2">個数:</h2>
             </div>
             <div class="form-group col-md-4">
-                <input type="number" name="buy_quantity" class="form-control form-control-lg text-center border-0 font-weight-bold" min="1" max="<?php echo $item['item_stocks']; ?>">
+                <input type="number" name="buy_quantity" class="form-control form-control-lg text-center border-0 font-weight-bold" min="1" max="<?php echo $item['item_stocks']; ?>" required="required">
             </div>
           </div>
 
@@ -138,6 +141,7 @@ $room = $_GET['room'];
             <div class="form-group col-md-6">
               <input type="submit" value="buy" name="choose" class="form-control btn btn-outline-white">
             </div>
+            <input type="hidden" value="<?php echo $_GET['room']; ?>" name="room">
             <input type="hidden" value="<?php echo $item['item_id']; ?>" name="item_id">
           </div>
     </form>
