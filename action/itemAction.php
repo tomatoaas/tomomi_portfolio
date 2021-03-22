@@ -24,9 +24,9 @@
         }
     }elseif(isset($_POST['cart'])){
         if(!isset($_SESSION['username'])){
-            header("Location: ../views/login.php?item_id=". $_POST['item_id']);
+            header("Location: ../views/login.php?room=". $_POST['room']);
         }else{
-            header("Location: ../views/showRoom.php?room=". $_SESSION['room']);
+            $item->addCart($_SESSION['username'], $_POST['item_id'], $_POST['buy_quantity']);
         }
     }
 ?>

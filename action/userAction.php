@@ -18,12 +18,12 @@
         }
     }elseif(isset($_POST['login'])){
 
-        $item_id = 0;
-        if(isset($_POST['item_id'])){
-            $item_id = $_POST['item_id'];
+        $room = 0;
+        if(isset($_POST['room'])){
+            $room = $_POST['room'];
         }
 
-        $user->login($_POST['username'], $_POST['password'], $item_id);
+        $user->login($_POST['username'], $_POST['password'], $room);
     }
 
 ?>

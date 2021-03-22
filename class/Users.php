@@ -35,7 +35,7 @@
 
         }
 
-        public function login($username, $password, $item_id){
+        public function login($username, $password, $room){
             
             $sql = "SELECT * FROM accounts INNER JOIN users ON accounts.account_id = users.account_id WHERE username = '$username'";
 
@@ -46,12 +46,12 @@
 
                 if(password_verify($password, $row['password'])){
                     $_SESSION['username'] = $row['username'];
-                    $_SESSION['first_name'] = $row['first_name'];
-                    $_SESSION['last_name'] = $row['last_name'];
                     $_SESSION['status'] = $row['status'];
                 
                     if($row['status'] == 'A'){
                         header("Location: ../views/addItem.php");
+                    }elseif($room != 0){
+                        header("Location: ../views/showRoom.php?room=". $room);
                     }else{
                         header("Location: ../views/index.php");
                     }

@@ -6,8 +6,8 @@ if(empty($_SESSION)){
   session_destroy();
 }
 
-if(isset($_GET['item_id'])){
-  $item_id = $_GET['item_id'];
+if(isset($_GET['room'])){
+  $room = $_GET['room'];
 }
 
   //number of items in cart
@@ -127,9 +127,9 @@ if(isset($_GET['item_id'])){
                         <div class="form-group col-md-12">
                             <input type="submit" value="Register" name="registration" class="form-control btn btn-outline-white">
                             <?php 
-                              if(isset($item_id)){
+                              if(isset($room)){
                             ?>
-                            <input type="hidden" value="<?php echo $item_id ?>" name="item_id">
+                            <input type="hidden" value="<?php echo $room ?>" name="room">
                             <?php
                               }
                             ?>
