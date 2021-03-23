@@ -59,6 +59,26 @@
             }
         }
 
+        public function displayCartItem($username){
+            $sql = "SELECT items.item_name, items.item_price, item_picture, buy_quantity FROM items INNER JOIN cart ON items.item_id = cart.item_id INNER JOIN users ON cart.user_id = users.user_id 
+            INNER JOIN accounts ON accounts.account_id = users.account_id WHERE accounts.username = '$username'";
+            // die($sql);
+            $result = $this->conn->query($sql);
+
+            $row = array();
+
+            if($result->num_rows > 0){
+                while($cart_items = $result->fetch_assoc()){
+                    $row[] = $cart_items;
+                }
+
+                return $row;
+            }else{
+                return false;
+            }
+
+        }
+
         public function addCart($username, $item_id, $buy_quantity){
             $user_sql = "SELECT user_id FROM accounts INNER JOIN users ON accounts.account_id = users.account_id WHERE username = '$username'";
             
@@ -66,14 +86,25 @@
             $user_id = $result['user_id'];
 
             if($user_id){
-                $sql = "INSERT INTO cart(user_id, item_id, buy_quantity) VALUES('$user_id', '$item_id', '$buy_quantity')";
+                if($this->editBuyQuentity($item_id, $buy_quantity)){
+                    $sql = "INSERT INTO cart(user_id, item_id, buy_quantity) VALUES('$user_id', '$item_id', '$buy_quantity')";
                 
-                $result = $this->conn->query($sql);
-
-                if($result){
-                    header("Location: ../views/showRoom.php?room=". $_SESSION['room']);
+                    $result = $this->conn->query($sql);
+    
+                    if($result == true){
+                        header("Location: ../views/showRoom.php?room=". $_SESSION['room']);
+                    }
                 }
+            }
+        }
 
+        public function editBuyQuentity($item_id, $buy_quantity){
+            $sql = "UPDATE items SET item_stocks = items.item_stocks - '$buy_quantity' WHERE item_id = '$item_id'";
+
+            if($this->conn->query($sql)){
+                return true;
+            }else{
+                return false;
             }
         }
 

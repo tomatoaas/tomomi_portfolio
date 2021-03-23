@@ -7,11 +7,13 @@ if(empty($_SESSION)){
 }
 $room = $_GET['room'];
 $item = new Item();
+
   //number of items in cart
+  $cart_num = 0;
   if(isset($_SESSION['username'])){
     $cart_num = $item->countCart($_SESSION['username']);
   }
-  $cart_num = 0;
+  
   $num_format = 10101;
 
 ?>
@@ -70,7 +72,7 @@ $item = new Item();
                   }
                   ?>
                   <a href="logout.php" class="nav-link">logout</a></li>
-                  <li><a href="cart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
+                  <li><a href="showCart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
               <?php
                 } ?> 
             </ul>
