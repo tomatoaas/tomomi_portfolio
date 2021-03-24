@@ -62,7 +62,6 @@ $item = new Item();
                   }
                   ?>
                   <a href="logout.php" class="nav-link">logout</a></li>
-                  <!-- <li><a href="cart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li> -->
               <?php
                 } ?> 
             </ul>
