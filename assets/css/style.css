@@ -671,10 +671,20 @@ section {
   position: relative;
 }
 
-.hero-section2 {
+.hero-section2{
   /* background: linear-gradient(to top, rgba(255, 255, 255, 0.8) 0%, rgba(131, 184, 233, 0.8) 100%); */
   position: relative;
   background:rgb(131, 184, 233, 0.8);
+}
+
+.table-hover tbody tr:hover > td, .table-hover tbody tr:hover > th{
+  color:rgba(7, 74, 136, 0.8);
+
+}
+
+.table-hover th img{
+  width: 70px;
+  height: auto;
 }
 
 /* .hero-section .card {

@@ -20,6 +20,12 @@ $item = new Item();
     <link rel="stylesheet" href="../assets/css/style.css">
     
     <title>show cart</title>
+
+    <style>
+      body{
+        background:rgb(131, 184, 233, 0.8);
+      }
+    </style>
 </head>
 <body>
 
@@ -79,74 +85,52 @@ $item = new Item();
     </div>
 
   </header>
-<section class="hero-section2" id="hero">
-    <?php
-      $cart_items = $item->displayCartItem($_SESSION['username']);
 
-      if(!$cart_items){
-    ?>
-      <div class="col-md-12">
-        <p>No Records Found</p>
-      </div>
-    <?php
-      }else{
-        foreach($cart_items as $item){
+<section>
+<div class="container mt-5 pt-5">
+  <table class="table table-hover bg-transparent border border-1 text-white">
+    <thead>
+        <th>Item Picture</th>
+        <th>Item Name</th>
+        <th class="text-right">Item Price</th>
+        <?php
+            $item_list = $item->displayCartItem($_SESSION['username']);
 
-    ?>
+            if($item_list){
+        ?>
+            <th class="text-right">Buy Quantity</th>
+        <?php
+            }
+        ?>
+        <th></th>
+    </thead>
+    <tbody>
+        <?php
+            if(!$item_list){
+        ?>
+            <td colspan="3" class="text-danger text-center font-weight-bold">No Items Found</td>
+        <?php
+            }else{
+                foreach($item_list as $item){
+                ?>
+                    <tr>
+                        <th class="text-center"><img src="../assets/img/<?php echo $item['item_picture']; ?>"></th>
+                        <th><?php echo $item['item_name'];?></th>
+                        <td class="text-right"><?php echo $item['item_price'];?></td>
+                        <td class="text-right"><?php echo $item['buy_quantity'];?></td>
+                        <td class="text-center"><a href="buyItem.php?item_id=<?php echo $item['item_id']?>" class="btn btn-outline-white px-4">BUY</a></td>
+                    </tr>
+                <?php
+                }
+            }
+        ?>
+    </tbody>
+  </table>
+</div>
+  
 
-    </div>
-
-    <section class="section">
-      <div class="container">
-        <div class="row align-items-center feature-2 text-center">
-          <div class="col-md-6 ml-auto order-2">
-          <form action="../action/itemAction.php" method="post">
-          <div class="form-row text-center">
-            <div class="form-group col-md-12 mt-3">
-              <h2 class="text-white"><?php echo $item['item_name']; ?></h2>
-            </div>
-          </div>
-
-          <div class="form-row text-center">
-            <div class="form-group col-md-12">
-              <h2 class="text-white pt-2"><?php echo number_format($item['item_price']) . "円"; ?></h2>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-5 text-right">
-                <h2 class="text-white pt-2">個数:</h2>
-            </div>
-            <div class="form-group col-md-4">
-                <input type="number" name="buy_quantity" value="<?php echo $item['buy_quantity'] ?>" class="form-control form-control-lg text-center border-0 font-weight-bold" min="1" required="required">
-            </div>
-          </div>
-
-          <div class="form-row w-50 ml-auto">
-            <div class="form-group col-md-12">
-              <input type="submit" value="buy" name="choose" class="form-control btn btn-outline-white">
-            </div>
-          </div>
-    </form>
-          </div>
-          <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/img/<?php echo $item['item_picture']; ?>" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=2'">
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <?php
-
-
-        }
-      }
-
-    ?>
-
-    </div>
 </section>
+
 
 <!-- Vendor JS Files -->
  <script src="../assets/vendor/jquery/jquery.min.js"></script>
