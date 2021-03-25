@@ -60,7 +60,7 @@
         }
 
         public function displayCartItem($username){
-            $sql = "SELECT items.item_name, items.item_price, item_picture, buy_quantity FROM items INNER JOIN cart ON items.item_id = cart.item_id INNER JOIN users ON cart.user_id = users.user_id 
+            $sql = "SELECT items.item_id, items.item_name, items.item_price, item_picture, buy_quantity FROM items INNER JOIN cart ON items.item_id = cart.item_id INNER JOIN users ON cart.user_id = users.user_id 
             INNER JOIN accounts ON accounts.account_id = users.account_id WHERE accounts.username = '$username'";
             // die($sql);
             $result = $this->conn->query($sql);
@@ -118,6 +118,18 @@
                 return 0;
             }
 
+        }
+
+        //totalPriceを計算
+        public function calTotalPrice($item_id, $buy_quantity){
+            $sql = "SELECT item_price FROM items WHERE item_id = '$item_id'";
+            $result = $this->conn->query($sql)->fetch_assoc();
+            $totalPrice = ($result['item_price'] * $buy_quantity);
+            if($totalPrice){
+                return $totalPrice;
+            }else{
+                echo "Not Price";
+            }
         }
     }
 

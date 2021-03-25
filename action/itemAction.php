@@ -28,5 +28,15 @@
         }else{
             $item->addCart($_SESSION['username'], $_POST['item_id'], $_POST['buy_quantity']);
         }
+    }elseif(isset($_POST['buy'])){
+        if(!isset($_SESSION['username'])){
+            header("Location: ../views/login.php?room=". $_POST['room']);
+        }else{
+            if(isset($_SESSION['totalPrice'])){
+                unset($_SESSION['totalPrice']);
+            }
+            $_SESSION['totalPrice'] = $item->calTotalPrice($_POST['item_id'], $_POST['buy_quantity']);
+            header("Location: ../views/payment.php");
+        }
     }
 ?>
