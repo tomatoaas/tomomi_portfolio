@@ -141,7 +141,7 @@ $item = new Item();
               <input type="submit" value="cart" name="cart" class="form-control btn btn-outline-white">
             </div>
             <div class="form-group col-md-6">
-              <input type="submit" value="buy" name="choose" class="form-control btn btn-outline-white">
+              <input type="submit" value="buy" name="buy" class="form-control btn btn-outline-white">
             </div>
             <input type="hidden" value="<?php echo $_GET['room']; ?>" name="room">
             <input type="hidden" value="<?php echo $item['item_id']; ?>" name="item_id">

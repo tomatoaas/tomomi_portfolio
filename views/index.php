@@ -94,7 +94,7 @@ $item = new Item();
                   }
                   ?>
                   <a href="logout.php" class="nav-link">logout</a></li>
-                  <li><a href="showCart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
+                  <?php if($cart_num > 0){ ?><li><a href="showCart.php" class="nav-link">cart <?php echo '&#'. ($num_format + $cart_num); ?></a></li><?php }; ?>
               <?php
                 } ?> 
             </ul>
@@ -264,7 +264,7 @@ $item = new Item();
     </section>
 
     <!-- ======= Testimonials Section ======= -->
-    <section class="section border-top border-bottom">
+    <!-- <section class="section border-top border-bottom">
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-4">
@@ -349,7 +349,7 @@ $item = new Item();
           </div>
         </div>
       </div>
-    </section><!-- End Testimonials Section -->
+    </section>End Testimonials Section -->
 
     <!-- ======= CTA Section ======= -->
     <section class="section cta-section">

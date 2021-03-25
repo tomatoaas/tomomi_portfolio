@@ -674,7 +674,7 @@ section {
 .hero-section2{
   /* background: linear-gradient(to top, rgba(255, 255, 255, 0.8) 0%, rgba(131, 184, 233, 0.8) 100%); */
   position: relative;
-  background:rgb(131, 184, 233, 0.8);
+  /* background:rgb(131, 184, 233, 0.8); */
 }
 
 .table-hover tbody tr:hover > td, .table-hover tbody tr:hover > th{
@@ -687,35 +687,31 @@ section {
   height: auto;
 }
 
-/* .hero-section .card {
-  background: linear-gradient(to top, rgba(123, 180, 233, 0.8) 0%, rgba(65, 153, 235, 0.8) 100%);
-  position: relative;
-} */
-
-/* .hero-section .wave {
-  width: 100%;
-  overflow: hidden;
-  position: absolute;
-  z-index: 1;
-  bottom: -150px;
+input[type=radio] {
+  width: 20px;
+  height: 20px;
 }
 
-@media screen and (max-width: 992px) {
-  .hero-section .wave {
-    bottom: -180px;
-  }
+.form-check-label{
+  color:rgba(7, 74, 136, 0.8);
 }
-
-.hero-section .wave svg {
-  width: 100%;
-} */
 
 .hero-section, .hero-section > .container > .row {
   height: 100vh;
   min-height: 880px;
 }
 
+/* .hero-section2, .hero-section2 > .container > .row {
+  height: 100vh;
+  min-height: 880px;
+} */
+
 .hero-section.inner-page {
+  height: 60vh;
+  min-height: 0;
+}
+
+.hero-section2.inner-page {
   height: 60vh;
   min-height: 0;
 }
@@ -725,8 +721,19 @@ section {
   margin-top: -120px;
 }
 
+.hero-section2.inner-page .hero-text {
+  transform: translateY(-150px);
+  margin-top: -120px;
+}
+
 @media screen and (max-width: 992px) {
   .hero-section.inner-page .hero-text {
+    margin-top: -80px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hero-section2.inner-page .hero-text {
     margin-top: -80px;
   }
 }
@@ -738,8 +745,26 @@ section {
   margin-bottom: 30px;
 }
 
+.hero-section2 h1 {
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.hero-section2 form h3 {
+  color:rgba(7, 74, 136, 0.8);
+}
+
 @media screen and (max-width: 992px) {
   .hero-section h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hero-section2 h1 {
     font-size: 2.5rem;
     text-align: center;
   }
@@ -751,12 +776,27 @@ section {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .hero-section2 .hero-text-image {
+    margin-top: 4rem;
+  }
+}
+
 .hero-section p {
   font-size: 18px;
   color: #fff;
 }
 
+.hero-section2 p {
+  font-size: 18px;
+  color: #fff;
+}
+
 .hero-section .iphone-wrap {
+  position: relative;
+}
+
+.hero-section2 .iphone-wrap {
   position: relative;
 }
 
@@ -766,7 +806,22 @@ section {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .hero-section2 .iphone-wrap {
+    text-align: center;
+  }
+}
+
 .hero-section .iphone-wrap .phone-2, .hero-section .iphone-wrap .phone-1 {
+  position: absolute;
+  top: -50%;
+  overflow: hidden;
+  left: 0;
+  box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+
+.hero-section2 .iphone-wrap .phone-2, .hero-section2 .iphone-wrap .phone-1 {
   position: absolute;
   top: -50%;
   overflow: hidden;
@@ -783,12 +838,29 @@ section {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .hero-section2 .iphone-wrap .phone-2, .hero-section2 .iphone-wrap .phone-1 {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+  }
+}
+
 .hero-section .iphone-wrap .phone-2, .hero-section .iphone-wrap .phone-1 {
+  width: 250px;
+}
+
+.hero-section2 .iphone-wrap .phone-2, .hero-section2 .iphone-wrap .phone-1 {
   width: 250px;
 }
 
 @media screen and (max-width: 992px) {
   .hero-section .iphone-wrap .phone-1 {
+    margin-left: -150px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .hero-section2 .iphone-wrap .phone-1 {
     margin-left: -150px;
   }
 }
@@ -799,8 +871,23 @@ section {
   width: 250px;
 }
 
+.hero-section2 .iphone-wrap .phone-2 {
+  margin-top: 50px;
+  margin-left: 100px;
+  width: 250px;
+}
+
 @media screen and (max-width: 992px) {
   .hero-section .iphone-wrap .phone-2 {
+    width: 250px;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hero-section2 .iphone-wrap .phone-2 {
     width: 250px;
     position: absolute;
     margin-top: 0px;

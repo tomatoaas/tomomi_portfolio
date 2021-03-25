@@ -30,6 +30,11 @@ $item = new Item();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 
     <title>Add Item</title>
+    <style>
+      body{
+        background:rgb(131, 184, 233, 0.8);
+      }
+    </style>
     </head>
 <body>
     

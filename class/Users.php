@@ -57,10 +57,10 @@
                     }
                     
                 }else{
-                    return "Invaid Password";
+                    echo "Invaid Password";
                 }
             }else{
-                return "Invaid Username";
+                echo "Invaid Username";
             }
 
         }

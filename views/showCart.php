@@ -6,6 +6,8 @@ if(empty($_SESSION)){
   session_destroy();
 }
 $item = new Item();
+
+$item_list = $item->displayCartItem($_SESSION['username']);
 ?>
 
 <!DOCTYPE html>
@@ -88,44 +90,38 @@ $item = new Item();
 
 <section>
 <div class="container mt-5 pt-5">
-  <table class="table table-hover bg-transparent border border-1 text-white">
+<table class="table table-hover bg-transparent border border-1 text-white">
     <thead>
         <th>Item Picture</th>
         <th>Item Name</th>
         <th class="text-right">Item Price</th>
-        <?php
-            $item_list = $item->displayCartItem($_SESSION['username']);
-
-            if($item_list){
-        ?>
             <th class="text-right">Buy Quantity</th>
-        <?php
-            }
-        ?>
         <th></th>
     </thead>
+<?php
+  foreach($item_list as $item){
+?>
+  <form action="../action/itemAction.php" method="post">
+  
+    
     <tbody>
-        <?php
-            if(!$item_list){
-        ?>
-            <td colspan="3" class="text-danger text-center font-weight-bold">No Items Found</td>
-        <?php
-            }else{
-                foreach($item_list as $item){
-                ?>
-                    <tr>
-                        <th class="text-center"><img src="../assets/img/<?php echo $item['item_picture']; ?>"></th>
-                        <th><?php echo $item['item_name'];?></th>
-                        <td class="text-right"><?php echo $item['item_price'];?></td>
-                        <td class="text-right"><?php echo $item['buy_quantity'];?></td>
-                        <td class="text-center"><a href="buyItem.php?item_id=<?php echo $item['item_id']?>" class="btn btn-outline-white px-4">BUY</a></td>
-                    </tr>
-                <?php
-                }
-            }
-        ?>
+      <tr>
+          <th class="text-center"><img src="../assets/img/<?php echo $item['item_picture']; ?>"></th>
+          <th><?php echo $item['item_name'];?></th>
+          <td class="text-right"><?php echo $item['item_price'];?></td>
+          <td class="text-right"><input type="number" name="buy_quantity" value="<?php echo $item['buy_quantity'];?>" class="text-center w-50"></td>
+          <td class="text-center"><input type="submit" value="buy" name="buy" class="btn btn-outline-white px-4"></td>
+          <td><input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>"></td>
+        </tr>
+
     </tbody>
-  </table>
+  
+  
+  </form>
+<?php
+  }
+?>
+</table>
 </div>
   
 
