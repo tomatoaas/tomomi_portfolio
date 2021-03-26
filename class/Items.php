@@ -60,9 +60,27 @@
         }
 
         public function displayCartItem($username){
-            $sql = "SELECT items.item_id, items.item_name, items.item_price, item_picture, buy_quantity FROM items INNER JOIN cart ON items.item_id = cart.item_id INNER JOIN users ON cart.user_id = users.user_id 
+            $sql = "SELECT items.item_id, items.item_name, items.item_price, item_picture, buy_quantity, cart.cart_id FROM items INNER JOIN cart ON items.item_id = cart.item_id INNER JOIN users ON cart.user_id = users.user_id 
             INNER JOIN accounts ON accounts.account_id = users.account_id WHERE accounts.username = '$username'";
-            // die($sql);
+            
+            $result = $this->conn->query($sql);
+
+            $row = array();
+
+            if($result->num_rows > 0){
+                while($cart_items = $result->fetch_assoc()){
+                    $row[] = $cart_items;
+                }
+
+                return $row;
+            }else{
+                return false;
+            }
+
+        }
+
+        public function displayBuyItem($item_id){
+            $sql = "SELECT item_id, item_picture, item_name, item_price FROM items WHERE items.item_id = '$item_id'";
             $result = $this->conn->query($sql);
 
             $row = array();
@@ -108,6 +126,7 @@
             }
         }
 
+        //cartに入っている商品の数
         public function countCart($username){
             $sql = "SELECT count(cart_id) FROM cart INNER JOIN users ON cart.user_id = users.user_id INNER JOIN accounts ON accounts.account_id = users.account_id WHERE accounts.username = '$username'";
             $result = $this->conn->query($sql)->fetch_assoc();
@@ -129,6 +148,53 @@
                 return $totalPrice;
             }else{
                 echo "Not Price";
+            }
+        }
+
+        //Orderに代入する処理
+        public function InputOrder($username, $item_id, $buy_quantity){
+            $user_sql = "SELECT user_id FROM accounts INNER JOIN users ON accounts.account_id = users.account_id WHERE username = '$username'";
+            
+            $result = $this->conn->query($user_sql)->fetch_assoc();
+            $user_id = $result['user_id'];
+
+            $sql = "INSERT INTO orders(user_id, item_id, buy_quantity, date_orderd) VALUES($user_id, $item_id, $buy_quantity, now())";
+            if($this->conn->query($sql)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        //transactionにINSERTする
+        public function InputTransaction($username, $totalPrice, $payment_method, $payment, $change){
+            $user_sql = "SELECT user_id FROM accounts INNER JOIN users ON accounts.account_id = users.account_id WHERE username = '$username'";
+            
+            $result = $this->conn->query($user_sql)->fetch_assoc();
+            $user_id = $result['user_id'];
+
+            $order_sql = "SELECT max(order_id) AS order_id FROM orders";
+            $result = $this->conn->query($order_sql)->fetch_assoc();
+            $order_id = $result['order_id'];
+
+            if($payment_method == "card"){
+                $sql = "INSERT INTO transaction(user_id, order_id, total_price, payment_method) VALUES($user_id, $order_id, $totalPrice, '$payment_method')";
+            }else{
+                $sql = "INSERT INTO transaction(user_id, order_id, total_price, payment_method, payment, `changes`) VALUES($user_id, $order_id, $totalPrice, '$payment_method', $payment, $change)";
+            }
+            if($this->conn->query($sql)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        public function DeleteCart($cart_id){
+            $sql = "DELETE FROM cart WHERE cart_id = '$cart_id'";
+            if($this->conn->query($sql)){
+                return true;
+            }else{
+                return false;
             }
         }
     }

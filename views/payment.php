@@ -97,43 +97,31 @@ if(empty($_SESSION)){
                             <h3>Total Price : <?php echo number_format($_SESSION['totalPrice']) . "円"; ?></h3>
                         </div>
                     </div>
-                    <!-- <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="text" name="address" class="form-control p-4" placeholder="address" required="required">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="email" name="email" class="form-control p-4" placeholder="email" required="required">
-                        </div>
-                    </div> -->
-
                     <div class="form-row text-right mb-3 w-75">
                         <div class="form-check col-md-6">
-                            <input class="form-check-input" type="radio" name="payment" id="cash" required="required" >
-                            <label class="form-check-label ml-2" for="cash">cash</label>
+                            <input class="form-check-input" type="radio" name="payment" id="card" value="card" required="required" onclick="changeDisable()">
+                            <label class="form-check-label ml-2" for="card">card</label>
                         </div>
                         <div class="form-check col-md-6">
-                            <input class="form-check-input" type="radio" name="payment" id="card" required="required" >
-                            <label class="form-check-label ml-2" for="card">card</label>
+                            <input class="form-check-input" type="radio" name="payment" id="cash" value="cash" required="required" onclick="changeEnable()" >
+                            <label class="form-check-label ml-2" for="cash">cash</label>
                         </div>
                     </div>
                     <div class="form-row">
+                      <div class="form-group col-md-6"></div>
                       <div class="form-group col-md-6">
-                      </div>
-                        <div class="form-group col-md-6">
                         <div class="input-group">
-                            <input type="number" name="payment" class="form-control" placeholder="payment" required="required" aria-describedby="basic-addon1"  aria-label="Payment">
-                            <div class="input-group-append">
-                              <span class="input-group-text" id="basic-addon1">円</span>
-                            </div>
+                          <input type="number" name="money" id="payment" class="form-control" placeholder="payment" required="required" disabled="disabled" min="<?php echo ($_SESSION['totalPrice']); ?>">
+                          <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon1">円</span>
                           </div>
                         </div>
+                      </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="submit" value="Buy" name="buy" class="form-control btn btn-outline-white">
+                            <input type="submit" value="Next" name="next" class="form-control btn btn-outline-white">
                         </div>
                     </div>                    
 
@@ -151,8 +139,10 @@ if(empty($_SESSION)){
   <!-- <script src="../assets/vendor/aos/aos.js"></script> -->
   <!-- <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script> -->
   <script src="../assets/vendor/jquery-sticky/jquery.sticky.js"></script>
-
+  
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <script src="enable.js"></script>
 </body>
 </html>

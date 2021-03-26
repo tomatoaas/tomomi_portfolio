@@ -682,7 +682,7 @@ section {
 
 }
 
-.table-hover th img{
+.table-hover td img{
   width: 70px;
   height: auto;
 }
@@ -693,6 +693,10 @@ input[type=radio] {
 }
 
 .form-check-label{
+  color:rgba(7, 74, 136, 0.8);
+}
+
+.text-naivy{
   color:rgba(7, 74, 136, 0.8);
 }
 

@@ -106,12 +106,13 @@ $item_list = $item->displayCartItem($_SESSION['username']);
     
     <tbody>
       <tr>
-          <th class="text-center"><img src="../assets/img/<?php echo $item['item_picture']; ?>"></th>
-          <th><?php echo $item['item_name'];?></th>
+          <td class="text-center"><img src="../assets/img/<?php echo $item['item_picture']; ?>"></td>
+          <td><?php echo $item['item_name'];?></td>
           <td class="text-right"><?php echo $item['item_price'];?></td>
           <td class="text-right"><input type="number" name="buy_quantity" value="<?php echo $item['buy_quantity'];?>" class="text-center w-50"></td>
-          <td class="text-center"><input type="submit" value="buy" name="buy" class="btn btn-outline-white px-4"></td>
+          <td class="text-center"><input type="submit" value="buy" name="choose" class="btn btn-outline-white px-4"></td>
           <td><input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>"></td>
+          <input type="hidden" name="cart_id" value="<?php echo $item['cart_id']; ?>">
         </tr>
 
     </tbody>

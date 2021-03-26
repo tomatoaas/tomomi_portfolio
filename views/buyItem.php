@@ -5,17 +5,8 @@ if(empty($_SESSION)){
   session_unset();
   session_destroy();
 }
-$room = $_GET['room'];
 $item = new Item();
-
-  //number of items in cart
-  $cart_num = 0;
-  if(isset($_SESSION['username'])){
-    $cart_num = $item->countCart($_SESSION['username']);
-  }
-  
-  $num_format = 10101;
-
+$item_list = $item->displayBuyItem($_SESSION['item_id']);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +20,8 @@ $item = new Item();
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="../assets/css/style.css">
     
-    <title>show room</title>
+    <title>Invoice</title>
+
     <style>
       body{
         background:rgb(131, 184, 233, 0.8);
@@ -77,7 +69,6 @@ $item = new Item();
                   }
                   ?>
                   <a href="logout.php" class="nav-link">logout</a></li>
-                  <li><a href="showCart.php" class="nav-link">cart <?php if($cart_num > 0){ echo '&#'. ($num_format + $cart_num); }; ?></a></li>
               <?php
                 } ?> 
             </ul>
@@ -95,82 +86,68 @@ $item = new Item();
     </div>
 
   </header>
-<section class="hero-section2" id="hero">
-    <div class="container text-center my-5 pt-5">
-        <img src="../assets/img/room<?php echo $room; ?>.jpg" alt="Image" class="img-fluid rounded w-75">
-    </div>
-    <?php
-      $room_items = $item->displayRoomItem($room);
 
-      if(!$room_items){
-    ?>
-      <div class="col-md-12">
-        <p>No Records Found</p>
-      </div>
-    <?php
-      }else{
-        foreach($room_items as $item){
-
-    ?>
-
-    </div>
-
-    <section class="section">
-      <div class="container">
-        <div class="row align-items-center feature-2">
-          <div class="col-md-6 ml-auto order-2">
-          <form action="../action/itemAction.php" method="post">
-          <div class="form-row text-center">
-            <div class="form-group col-md-12">
-              <h2 class="text-white"><?php echo $item['item_name']; ?></h2>
-            </div>
-          </div>
-
-          <div class="form-row text-center">
-            <div class="form-group col-md-12">
-              <h2 class="text-white pt-2"><?php echo number_format($item['item_price']) . "円"; ?></h2>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-5 text-right">
-                <h2 class="text-white pt-2">個数:</h2>
-            </div>
-            <div class="form-group col-md-4">
-                <input type="number" name="buy_quantity" class="form-control form-control-lg text-center border-0 font-weight-bold" min="1" max="<?php echo $item['item_stocks']; ?>" required="required">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <input type="submit" value="cart" name="cart" class="form-control btn btn-outline-white">
-            </div>
-            <div class="form-group col-md-6">
-              <input type="submit" value="buy" name="choose" class="form-control btn btn-outline-white">
-            </div>
-            <input type="hidden" value="<?php echo $_GET['room']; ?>" name="room">
-            <input type="hidden" value="<?php echo $item['item_id']; ?>" name="item_id">
-          </div>
-    </form>
-          </div>
-          <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/img/<?php echo $item['item_picture']; ?>" alt="Image" class="img-fluid" onclick="location.href='./showRoom.php?room=2'">
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <?php
-
-
-        }
+<section>
+<div class="container mt-5 pt-5">
+<form action="../action/itemAction.php" method="post">
+<table class="table bg-transparent border w-75 text-naivy">
+<?php
+  foreach($item_list as $item){
+?>
+  
+    
+    <tbody class="w-75 float-center">
+      <tr>
+        <td>Item Name</td>
+        <td class="text-right"><?php echo $item['item_name'];?></td>
+      </tr>
+      <tr>
+        <td>Item Price</td>
+        <td class="text-right"><?php echo number_format($item['item_price']);?>円</td>
+      </tr>
+      <tr>
+        <td>Buy Quantity</td>
+        <td class="text-right"><?php echo $_SESSION['buy_quantity'];?></td>
+      </tr>
+      <tr>
+        <td>Total Price</td>
+        <td class="text-right" name="totalPrice"><?php echo number_format($_SESSION['totalPrice']);?>円</td>
+      </tr>
+      <tr>
+        <td>Payment method</td>
+        <td class="text-right" name="payment_method"><?php echo $_SESSION['payment'];?></td>
+      </tr>
+      <?php if($_SESSION['payment'] == "cash"){ ?>
+      <tr>
+        <td>Payment</td>
+        <td class="text-right" name="payment"><?php echo number_format($_SESSION['money']);?>円</td>
+      </tr>
+      <tr>
+        <td>Change</td>
+        <td class="text-right"><p name="changes"><?php echo number_format($_SESSION['money'] - $_SESSION['totalPrice']);?>円</p></td>
+      </tr>
+      <?php
       }
+      ?>
+      <tr>
+        <td></td>
+        <td class="text-right"><input type="submit" value="buy" name="buy" class="btn btn-outline-white px-4"></td>  
+      </tr>
+        <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>">
 
-    ?>
+    </tbody>
+  
+  
+<?php
+  }
+?>
+</table>
+</form>
+</div>
+  
 
-    </div>
 </section>
+
 
 <!-- Vendor JS Files -->
  <script src="../assets/vendor/jquery/jquery.min.js"></script>

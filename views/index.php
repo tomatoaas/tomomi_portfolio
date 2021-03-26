@@ -146,7 +146,7 @@ $item = new Item();
   <main id="main">
 
     <!-- ======= Home Section ======= -->
-    <section class="section">
+    <!-- <section class="section">
       <div class="container">
 
         <div class="row justify-content-center text-center mb-5">
@@ -183,9 +183,9 @@ $item = new Item();
         </div>
 
       </div>
-    </section>
+    </section> -->
 
-    <section class="section pt-0">
+    <section class="section pt-5">
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-5" data-aos="fade-up">
